@@ -1,0 +1,16 @@
+#!/bin/sh
+
+estado=`ps aux | grep apache2 | wc -l`
+rebootapache=`/etc/init.d/apache2 restart`
+correoroot=`echo "jdnc wjnd" | mail -s "jsnd" manueljesusbeginesgonzalez@gmail.com`
+
+if [ $estado -le 1 ]; then
+  echo "El servidor Apache no esta corriendo"
+	echo "A continuacion se procedera a arrancarlo"
+	$rebootapache
+	$correoroot
+	exit 0
+else
+	echo "El servidro Apache esta corriendo"
+	echo "Todo esta OK!"
+fi
