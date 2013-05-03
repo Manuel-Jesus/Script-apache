@@ -3,6 +3,7 @@
 estado=`ps aux | grep apache2 | wc -l`
 rebootapache=`/etc/init.d/apache2 restart`
 correoroot=`echo "Servidor Apache" | mail -s "El servidor Apache estaba parado y se ha Reiniciado" manueljesusbeginesgonzalez@gmail.com`
+#Si quisieramos mandar a mas de un destinatario, tendriamos que poner "-c" delante de cada correo que queramos añadir de más
 
 if [ $estado -le 1 ]; then
   echo "El servidor Apache no esta corriendo"
