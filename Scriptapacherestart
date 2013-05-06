@@ -2,20 +2,25 @@
 
 estado=`ps aux | grep apache2 | wc -l`
 rebootapache=`/etc/init.d/apache2 start`
-correoroot=`echo "Servidor Apache" | mail -s "El servidor Apache estaba parado y se ha Reiniciado" manueljesusbeginesgonzalez@gmail.com`
 #Si quisieramos mandar a mas de un destinatario, tendriamos que poner "-c" delante de cada correo que queramos añadir de más
 
 while true; do
 	if [ $estado -le 1 ]; then
+	#la linea anterior comprueba si el numero de procesos es menor o igual a 1
 		echo "El servidor Apache no esta corriendo"
 		echo "A continuacion se procedera a arrancarlo"
-		$rebootapache
+		`/etc/init.d/apache2 start`
 		echo "Se ha arrancado Apache"
-		$correoroot
+		`echo "Servidor Apache" | mail -s "El servidor Apache estaba parado y se ha Reiniciado" manueljesusbeginesgonzalez@gmail.com`
 		estado=`ps aux | grep apache2 | wc -l`
+		#el comando anterios comprobamos los procesos de apache
 	else
-		echo "El servidro Apache esta corriendo"
+		echo "El servidor Apache esta corriendo"
 		echo "Todo esta OK!"
 		estado=`ps aux | grep apache2 | wc -l`
+		#la linera anterior nos vulve a mostrar los procesos son mas de uno nos indica el que apache esta corriendo
 	fi
 done
+
+
+#para que no nos muestr en el buche los "echo" del "else" y esten continuamente imprimiendo por pantalla lo que debemos de hacer es comentar
