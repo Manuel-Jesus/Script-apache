@@ -2,7 +2,7 @@
 
 estado=`ps aux | grep apache2 | wc -l`
 rebootapache=`/etc/init.d/apache2 start`
-#Si quisieramos mandar a mas de un destinatario, tendriamos que poner "-c" delante de cada correo que queramos añadir de más
+
 
 while true; do
 	if [ $estado -le 1 ]; then
@@ -12,6 +12,7 @@ while true; do
 		`/etc/init.d/apache2 start`
 		echo "Se ha arrancado Apache"
 		`echo "Servidor Apache" | mail -s "El servidor Apache estaba parado y se ha Reiniciado" manueljesusbeginesgonzalez@gmail.com`
+		#Si quisieramos mandar a mas de un destinatario, tendriamos que poner "-c" delante de cada correo que queramos añadir de más
 		estado=`ps aux | grep apache2 | wc -l`
 		#el comando anterios comprobamos los procesos de apache
 	else
