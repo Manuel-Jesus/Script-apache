@@ -24,4 +24,4 @@ while true; do
 done
 
 
-#para que no nos muestr en el buche los "echo" del "else" y esten continuamente imprimiendo por pantalla lo que debemos de hacer es comentar
+#para que no nos muestre en el buche los "echo" del "else" y esten continuamente imprimiendo por pantalla lo que debemos de hacer es comentar
